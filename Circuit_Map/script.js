@@ -252,6 +252,15 @@
       const x = event.offsetX;
       const y = event.offsetY;
       showTooltip(race, x, y);
+      // COORDINATED VIEW: Map → Table
+      window.dispatchEvent(
+        new CustomEvent("timeline:raceSelected", {
+          detail: {
+            raceId: race.id,
+            season: race.year
+          }
+        })
+      );
     }
 
     // Coordinated View: Timeline → Map
