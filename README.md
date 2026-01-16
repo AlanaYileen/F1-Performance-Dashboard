@@ -24,14 +24,14 @@ https://alanayileen.github.io/F1-Performance-Dashboard/
 
 ## 📁 Project Structure
 
-F1-Performance-Dashboard/
+F1-Performance-Dashboard
 │
 ├── index.html # Main dashboard entry point
 ├── dashboard.js # Dashboard logic & tab management
 ├── dashboard.css # Global styles
 ├── table_data.js # Centralized data loading & processing
 │
-├── data/
+├── data
 │ ├── races.csv
 │ ├── circuits.csv
 │ ├── drivers.csv
@@ -40,20 +40,20 @@ F1-Performance-Dashboard/
 │ ├── driver_standings.csv
 │ └── f1_grid_race_comp.csv
 │
-├── Circuit_Map/
+├── Circuit_Map
 │ ├── index.html
 │ ├── script.js
 │ └── world.json
 │
-├── Season_Timeline/
+├── Season_Timeline
 │ ├── index.html
 │ └── script.js
 │
-├── Driver_Comparison/
+├── Driver_Comparison
 │ ├── index.html
 │ └── script.js
 │
-├── Grid/
+├── Grid
 │ ├── index.html
 │ └── grid_viz.js
 │
