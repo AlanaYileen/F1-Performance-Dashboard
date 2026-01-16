@@ -1,9 +1,9 @@
 // Load data
 Promise.all([
-    d3.csv("data/drivers.csv"),
-    d3.csv("data/races.csv"),
-    d3.csv("data/results.csv"),
-    d3.csv("data/status.csv")
+    d3.csv("../data/drivers.csv"),
+    d3.csv("../data/races.csv"),
+    d3.csv("../data/results.csv"),
+    d3.csv("../data/status.csv")
   ]).then(([drivers, races, results, statusCSV]) => {
   
     // initialize data structures
