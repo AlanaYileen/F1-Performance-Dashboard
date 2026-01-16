@@ -49,7 +49,7 @@ window.SeasonTimeline.mount = function (containerSelector, opts = {}) {
     d3.select("body")
       .append("div")
       .attr("id", "race-details")
-      .style("position", "fixed")
+      .style("position", "absolute")
       .style("display", "none")
       .style("background", "rgba(0,0,0,0.9)")
       .style("color", "#ffffff")
