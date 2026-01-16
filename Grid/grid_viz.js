@@ -59,8 +59,8 @@ let currentSize = getContainerSize();
 
 // ---------- Load data ----------
 Promise.all([
-  d3.csv("data/drivers.csv", d3.autoType),
-  d3.csv("data/f1_grid_race_comp.csv", d3.autoType),
+  d3.csv("../data/drivers.csv", d3.autoType),
+  d3.csv("../data/f1_grid_race_comp.csv", d3.autoType),
 ]).then(([drivers, data]) => {
   drivers.forEach((d) => {
     const fullName = `${d.forename} ${d.surname}`;
