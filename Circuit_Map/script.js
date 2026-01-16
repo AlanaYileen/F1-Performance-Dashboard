@@ -13,10 +13,8 @@
       activeRaceId: null
     };
   
-    // -----------------------------
     // Helpers
-    // -----------------------------
-  
+     
     function normalizeCountry(name) {
       const mapping = {
         UK: "United Kingdom",
@@ -32,7 +30,7 @@
       rootSel.html("");
   
       // IMPORTANT: #circuitMap has class "viz" in dashboard HTML
-      // (dashed border / grid centering). Override it here so the map can fill.
+      // (dashed border / grid centering). Overrides it here so the map can fill.
       rootSel
         .style("position", "relative")
         .style("display", "block")
@@ -255,10 +253,19 @@
       const y = event.offsetY;
       showTooltip(race, x, y);
     }
-  
-    // -----------------------------
+
+    // Coordinated View: Timeline → Map
+    window.addEventListener("timeline:raceSelected", (e) => {
+      const { raceId, season } = e.detail;
+
+      // Only react if the map is showing the same season
+      if (season !== state.selectedYear) return;
+
+      state.activeRaceId = raceId;
+      update();
+    });
+    
     // Public API
-    // -----------------------------
     window.CircuitMap = window.CircuitMap || {};
   
     window.CircuitMap.mount = function (containerSelector, opts = {}) {
