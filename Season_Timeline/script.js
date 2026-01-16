@@ -87,7 +87,14 @@ function initTimeline() {
   detailsContent = d3.select("#race-details-content");
   detailsClose = d3.select("#race-details-close");
 
-  detailsClose.on("click", hideRaceDetails);
+  detailsTooltip.on("click", (event) => {
+    event.stopPropagation();
+  });
+
+  detailsClose.on("click", (event) => {
+    event.stopPropagation();
+    hideRaceDetails();
+  });;
 
   svg.selectAll("*").remove();
   g = svg.append("g")
