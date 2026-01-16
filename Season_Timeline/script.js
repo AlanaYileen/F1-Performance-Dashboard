@@ -221,8 +221,18 @@ function updateSeason(year) {
       .attr("r", 8)
       .attr("fill", d => getWinnerColor(d.raceId))
       .on("click", (event, d) => {
-        event.stopPropagation();     // prevent document click from firing
+        event.stopPropagation();
         showRaceDetails(d, event);
+      
+        // 🔗 COORDINATED VIEW EVENT
+        window.dispatchEvent(
+          new CustomEvent("timeline:raceSelected", {
+            detail: {
+              raceId: d.raceId,
+              season: d.year
+            }
+          })
+        );
       });
 
     raceGroups.append("text")
