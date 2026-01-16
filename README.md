@@ -24,6 +24,7 @@ https://alanayileen.github.io/F1-Performance-Dashboard/
 
 ## 📁 Project Structure
 
+```
 F1-Performance-Dashboard
 │
 ├── index.html # Main dashboard entry point
@@ -58,6 +59,7 @@ F1-Performance-Dashboard
 │ └── grid_viz.js
 │
 └── README.md
+```
 
 
 ---
