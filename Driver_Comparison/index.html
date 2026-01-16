@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>F1 Driver Comparison</title>
+
+  <!-- D3 -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+
+  <!-- Your Styles -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Choices.js for searchable dropdowns -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+
+</head>
+
+<body>
+
+  <h1>F1 Driver Comparison</h1>
+
+  <div id="comparison-container">
+
+    <!-- DRIVER 1 PANEL -->
+    <div class="panel" id="driver1-panel">
+      <div class="dropdown-holder">
+        <select id="driver1-select">
+            <option value="" placeholder>Select driver</option>
+        </select>
+      </div>
+      <div id="driver1"></div>
+    </div>
+
+    <!-- CENTER BAR PLOT PANEL -->
+    <div class="bars-center">
+      <div id="radar-chart"></div> <!--radar chart-->
+      <div id="bars-container"></div>
+    </div>
+
+    <!-- DRIVER 2 PANEL -->
+    <div class="panel" id="driver2-panel">
+      <div class="dropdown-holder">
+        <select id="driver2-select">
+            <option value="" placeholder>Select driver</option>
+        </select>
+      </div>
+      <div id="driver2"></div>
+    </div>
+
+  </div>
+
+  <div id="radar-modal" class="radar-modal hidden">
+    <div class="radar-modal-content">
+      <span id="radar-modal-close">&times;</span>
+      <div id="radar-chart-large"></div>
+    </div>
+  </div>
+
+  <div id="radar-tooltip" class="radar-tooltip hidden"></div>
+  <button id="backToDashboard">← Back to Dashboard</button>
+
+  <!-- Your JS logic -->
+  <script src="script.js"></script>
+</body>
+</html>

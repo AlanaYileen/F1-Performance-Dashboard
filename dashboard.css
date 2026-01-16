@@ -1,0 +1,483 @@
+:root{
+    --bg:#0b0c10;
+    --panel:#0f1117;
+    --border:rgba(255,255,255,0.10);
+    --border2:rgba(255,255,255,0.14);
+    --text:rgba(255,255,255,0.92);
+    --muted:rgba(255,255,255,0.62);
+    --muted2:rgba(255,255,255,0.45);
+    --accent:#ff2d2d;
+    --shadow:0 12px 28px rgba(0,0,0,0.55);
+    --radius:16px;
+    --radius2:22px;
+    --maxw:1200px;
+    --rowh:56px;
+    --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  }
+  
+  *{ box-sizing:border-box; }
+  html, body { height:100%; }
+  
+  body{
+    margin:0;
+    font-family:var(--font);
+    color:var(--text);
+    background:
+      radial-gradient(1200px 500px at 50% -50px, rgba(255,255,255,0.06), transparent 55%),
+      linear-gradient(180deg, #06070a 0%, #0b0c10 45%, #07080c 100%);
+  }
+  
+  /* Layout shell */
+  .container{
+    width:min(var(--maxw), calc(100% - 32px));
+    margin:0 auto;
+    padding:18px 0 48px;
+  }
+  
+  /* Header */
+  .header{
+    padding:18px 0 12px;
+    text-align:center;
+  }
+  
+  .title{
+    font-size: clamp(28px, 3.2vw, 44px);
+    font-weight: 900;
+    letter-spacing: 0.6px;
+  }
+  
+  /* Menu bar */
+  .menubar{
+    margin-top:16px;
+    background:rgba(255,255,255,0.03);
+    border:1px solid var(--border);
+    border-radius:var(--radius2);
+    padding:10px 12px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    backdrop-filter: blur(8px);
+  }
+  
+  .left-controls{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    min-width:190px;
+    justify-content:flex-start;
+  }
+  
+  .right-controls{
+    min-width:190px;
+    display:flex;
+    justify-content:flex-end;
+  }
+  
+  .label{
+    font-size:12px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--muted2);
+    margin-right:6px;
+  }
+  
+  select{
+    appearance:none;
+    background:rgba(255,255,255,0.04);
+    color:var(--text);
+    border:1px solid var(--border2);
+    border-radius:999px;
+    padding:10px 14px;
+    font-size:14px;
+    outline:none;
+    cursor:pointer;
+    min-width:120px;
+  }
+  select:focus{
+    border-color:rgba(255,45,45,0.65);
+    box-shadow:0 0 0 3px rgba(255,45,45,0.15);
+  }
+  
+  /* Tabs */
+  .tabs{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    justify-content:center;
+    flex:1;
+  }
+  
+  .tab{
+    border:0;
+    background:transparent;
+    color:var(--muted);
+    padding:10px 14px;
+    border-radius:999px;
+    cursor:pointer;
+    font-weight:700;
+    font-size:14px;
+    position:relative;
+  }
+  .tab:hover{
+    color:var(--text);
+    background:rgba(255,255,255,0.04);
+  }
+  .tab.active{
+    color:var(--text);
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.10);
+  }
+  .tab.active::after{
+    content:"";
+    position:absolute;
+    left:16px;
+    right:16px;
+    bottom:-10px;
+    height:3px;
+    border-radius:999px;
+    background:var(--accent);
+  }
+  
+  /* Views */
+  .view{ display:none; }
+  .view.active{ display:block; }
+  
+  .section-title{
+    margin:22px 0 14px;
+    font-size:22px;
+    font-weight:900;
+  }
+  
+  /* Two panel grid */
+  .grid-2{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+  }
+  @media (max-width: 900px){
+    .grid-2{ grid-template-columns:1fr; }
+  }
+  
+  .panel{
+    background: linear-gradient(180deg, rgba(255,255,255,0.035) 0%, rgba(255,255,255,0.02) 100%);
+    border:1px solid var(--border);
+    border-radius:var(--radius2);
+    box-shadow:var(--shadow);
+    overflow:visible;
+    min-height:340px;
+  }
+  
+  .panel-header{
+    padding:12px 14px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+    background:rgba(255,255,255,0.03);
+  }
+  .panel-header h3{
+    margin:0;
+    font-size:14px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--muted);
+    font-weight:800;
+  }
+  
+  .expand-btn{
+    border:1px solid rgba(255,255,255,0.10);
+    background:rgba(255,255,255,0.04);
+    color:var(--muted);
+    border-radius:10px;
+    padding:7px 10px;
+    cursor:pointer;
+    font-weight:800;
+    font-size:12px;
+  }
+  .expand-btn:hover{
+    color:var(--text);
+    border-color:rgba(255,255,255,0.16);
+  }
+  
+  .panel-body{
+    padding:12px;
+    height: calc(100% - 48px);
+  }
+  
+  /* Viz placeholder containers */
+  .viz{
+    width:100%;
+    height:100%;
+    border-radius:14px;
+    border:1px dashed rgba(255,255,255,0.20);
+    background:rgba(0,0,0,0.25);
+    display:grid;
+    place-items:center;
+    color:var(--muted);
+    text-align:center;
+    padding:12px;
+  }
+  .viz-inner{ max-width: 420px; }
+  .viz-title{ font-weight: 900; color: var(--text); }
+  .viz-sub{ margin-top: 6px; color: var(--muted2); font-size: 12px; }
+  
+  /* Tables */
+  .table-wrap{
+    margin-top:18px;
+    background:rgba(255,255,255,0.02);
+    border:1px solid var(--border);
+    border-radius:var(--radius2);
+    overflow:hidden;
+    box-shadow:var(--shadow);
+  }
+  table{ width:100%; border-collapse:collapse; }
+  thead{ background:rgba(255,255,255,0.03); }
+  
+  th, td{
+    padding:14px 16px;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+    font-size:14px;
+    white-space:nowrap;
+  }
+  
+  th{
+    color:var(--muted2);
+    font-size:12px;
+    text-align: left;
+    letter-spacing:0.10em;
+    text-transform:uppercase;
+    font-weight:900;
+  }
+  
+  tbody tr{
+    height:var(--rowh);
+    cursor:pointer;
+  }
+  tbody tr:hover{
+    background:rgba(255,255,255,0.04);
+  }
+  
+  .cell-main{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    min-width:220px;
+  }
+  
+  .flag, .driver-dot{
+    width:18px;
+    height:18px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,0.18);
+    background:rgba(255,255,255,0.10);
+    flex:0 0 auto;
+    display: none;
+  }
+  
+  .muted{ color:var(--muted); }
+  .num{ text-align:right; width:90px; }
+  .time{ text-align:right; width:140px; }
+  .pos{ width:70px; }
+  .pts{ text-align:right; width:90px; font-weight:900; }
+  
+  /* Drivers action */
+  .drivers-actions{
+    display:flex;
+    justify-content:flex-end;
+    margin:10px 0 0;
+  }
+  .primary-btn{
+    border:1px solid rgba(255,255,255,0.12);
+    background: linear-gradient(180deg, rgba(255,45,45,0.92), rgba(255,45,45,0.72));
+    color:#0b0c10;
+    font-weight:1000;
+    border-radius:999px;
+    padding:10px 14px;
+    cursor:pointer;
+    box-shadow:0 10px 18px rgba(255,45,45,0.14);
+  }
+  .primary-btn:hover{ filter:brightness(1.05); }
+  
+  /* Modal */
+  .modal-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.72);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:18px;
+    z-index:1000;
+  }
+  .modal-overlay.open{ display:flex; }
+  
+  .modal{
+    width:min(960px, 100%);
+    background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+    border:1px solid rgba(255,255,255,0.14);
+    border-radius:22px;
+    box-shadow:0 30px 80px rgba(0,0,0,0.70);
+    overflow:hidden;
+    align-self: center;
+  }
+  .modal-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    padding:12px 14px;
+    border-bottom:1px solid rgba(255,255,255,0.10);
+    background:rgba(0,0,0,0.90);
+  }
+  .modal-title{ font-weight:1000; }
+  .modal-close{
+    border:1px solid rgba(255,255,255,0.12);
+    background:rgba(255,255,255,0.06);
+    color:var(--text);
+    border-radius:12px;
+    padding:8px 10px;
+    cursor:pointer;
+    font-weight:900;
+  }
+  .modal-body{ 
+    padding:20px; 
+    height: calc(100vh - 140px);
+    display: flex;
+    background:rgba(0,0,0,0.80);
+  }
+
+  .modal-viz{
+    height:100%;
+    border-radius:14px;
+    border:1px dashed rgba(255,255,255,0.20);
+    background:rgba(0,0,0,0.25);
+    display:grid;
+    place-items:center;
+    color:var(--muted);
+    text-align:center;
+    padding:14px;
+  }
+  .footnote{
+    margin-top:10px;
+    color:var(--muted2);
+    font-size:12px;
+  }
+  
+  /* Ensure Season Timeline fills the panel */
+  #seasonTimeline {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 380px;  
+  }
+
+  #seasonTimeline svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  #circuitMap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 320px;
+  }
+  
+  #circuitMap #map {
+    width: 100%;
+    height: 100%;
+  }
+
+  .gridviz-wrap {
+    width: 100%;
+    height: auto;
+    min-height: 400px;
+  }
+  
+  #gridIframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-radius: 14px;
+  }
+  /* Containers should allow interaction */
+  .viz,
+  .modal-viz {
+    pointer-events: auto;
+  }
+
+  /* Modal backdrop should NOT capture mouse events */
+  #raceModal::before {
+    pointer-events: none;
+  }
+
+  /* Modal content MUST capture mouse events */
+  #raceModal .modal-content {
+    pointer-events: auto;
+  }
+
+  /* iframe itself must allow interaction */
+  #gridIframe {
+    pointer-events: auto;
+  }
+
+  /* Allow interaction inside the race modal */
+  #raceModal svg,
+  #raceModal svg *,
+  #raceModal .legend-chips,
+  #raceModal .chip {
+    pointer-events: all;
+  }
+
+  .modal-overlay {
+    pointer-events: auto;
+  }
+  
+  .modal-overlay::before {
+    pointer-events: auto; /* backdrop */
+  }
+  
+  .modal-content {
+    pointer-events: auto; /* THIS IS CRITICAL DO NOT CHANGE */
+  }
+
+  /* =========================
+   TRUE FULLSCREEN PANEL
+   ========================= */
+
+  .panel.fullscreen {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    border-radius: 0;
+    z-index: 9999;
+    background: linear-gradient(
+      180deg,
+      rgba(11,12,16,0.98),
+      rgba(11,12,16,0.96)
+    );
+  }
+
+  /* Let the viz actually fill the screen */
+  .panel.fullscreen .panel-body {
+    height: calc(100vh - 56px); 
+    padding: 16px;
+  }
+
+  .panel.fullscreen .viz {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+  }
+
+  /* Lock background scrolling */
+  body.viz-fullscreen {
+    overflow: hidden;
+  }
+

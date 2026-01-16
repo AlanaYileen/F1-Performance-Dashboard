@@ -1,0 +1,141 @@
+
+#circuitMap .cmap-wrap{
+  width:100%;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  position:relative;
+}
+
+#circuitMap .cmap-topbar{
+  flex:0 0 auto;
+  padding:8px 10px 0 10px;
+}
+
+#circuitMap .cmap-legend{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  align-items:center;
+  justify-content: center;
+}
+
+#circuitMap .legend-pill{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:8px 12px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,0.12);
+  background:rgba(0,0,0,0.25);
+  color:rgba(255,255,255,0.88);
+  font-weight:800;
+  font-size:12px;
+  letter-spacing:0.02em;
+}
+
+#circuitMap .legend-pill .swatch{
+  width:12px;
+  height:12px;
+  border-radius:4px;
+  border:1px solid rgba(255,255,255,0.28);
+  display:inline-block;
+}
+
+#circuitMap .swatch.never{ background: rgba(210, 220, 230, 0.50); }
+#circuitMap .swatch.history{ background: rgba(255,255,255,0.85); }
+#circuitMap .swatch.active{ background: rgba(255, 190, 120, 0.85); }
+
+#circuitMap .cmap-stage{
+  flex:1 1 auto;
+  min-height:0;
+  position:relative;
+  padding:0 10px 10px 10px;
+}
+
+#circuitMap svg{
+  width:100%;
+  height:100%;
+  display:block;
+  background:transparent;
+}
+
+/* Countries */
+#circuitMap .country{
+  fill: rgba(210, 220, 230, 0.35);              /* never hosted */
+  stroke: rgba(255,255,255,0.16);
+  stroke-width: 0.6px;
+  pointer-events: none;
+}
+
+#circuitMap .country.has-history{
+  fill: rgba(255,255,255,0.70);                 /* historical host */
+}
+
+#circuitMap .country.active-season{
+  fill: rgba(255, 190, 120, 0.72);              /* host (selected) */
+  stroke: rgba(255, 160, 70, 0.70);
+  stroke-width: 1.2px;
+}
+
+/* Race points */
+#circuitMap circle.race-point{
+  fill: rgba(155, 110, 255, 0.45);
+  stroke: rgba(255,255,255,0.65);
+  stroke-width: 1px;
+}
+
+#circuitMap circle.race-point.is-active{
+  fill: rgba(255, 45, 45, 0.70);
+  stroke: rgba(255,255,255,0.80);
+}
+
+/* Tooltip */
+#circuitMap .cmap-tooltip{
+  position:absolute;
+  z-index:50;
+  min-width:260px;
+  max-width:340px;
+  padding:14px 14px 12px 14px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,0.12);
+  background: rgba(0,0,0,0.80);
+  box-shadow: 0 18px 42px rgba(0,0,0,0.60);
+  color: rgba(255,255,255,0.92);
+  text-align: left;
+}
+
+#circuitMap .cmap-tooltip.hidden{ display:none; }
+
+#circuitMap .cmap-tip-close{
+  position:absolute;
+  right:10px;
+  top:8px;
+  width:28px;
+  height:28px;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.90);
+  font-size:18px;
+  cursor:pointer;
+}
+
+#circuitMap .tip-title{
+  font-weight:1000;
+  font-size:16px;
+  margin-bottom:8px;
+}
+
+#circuitMap .tip-row{
+  font-size:13px;
+  margin-top:6px;
+  color: rgba(255,255,255,0.88);
+}
+
+#circuitMap .tip-label{
+  color: rgba(255,255,255,0.88);
+  font-weight:800;
+  margin-right:6px;
+}

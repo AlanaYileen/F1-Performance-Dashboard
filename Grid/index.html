@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>F1 Slope Chart</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif; 
+      height: 100%;
+      margin: 0;
+    }
+    #chart {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    #yearDropdown, #raceDropdown, h1 { display: none; }
+
+    .labelQ:hover, .labelR:hover {
+    fill: #e10600 !important;
+    font-weight: bold;
+}
+
+  </style>
+</head>
+<body>
+
+<!--<h2>F1 Starting Grid vs. Finishing Position</h2> -->
+
+<!-- <label>Year:</label> -->
+<select id="yearDropdown"></select>
+
+ <!-- <label>Race:</label>  -->
+<select id="raceDropdown"></select>
+
+<br><br>
+<svg id="chart" viewBox="0 0 1000 700" preserveAspectRatio="xMidYMid meet"></svg> <!-- Alex -->
+
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="grid_viz.js"></script>
+</body>
+</html>

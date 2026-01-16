@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>F1 Performance Dashboard</title>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://unpkg.com/topojson@3"></script>
+  
+  <link rel="stylesheet" href="dashboard.css" />
+  <link rel="stylesheet" href="Season_Timeline/styles.css">
+  <link rel="stylesheet" href="Circuit_Map/style.css" />
+  
+</head>
+
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="title">F1 Performance Dashboard</div>
+
+      <nav class="menubar" aria-label="Season and tabs">
+        <div class="left-controls">
+          <div class="label">Season</div>
+          <select id="seasonSelect">
+            <option value="" selected disabled>Select</option>
+          </select>
+        </div>
+
+        <div class="tabs" role="tablist" aria-label="Dashboard tabs">
+          <button class="tab active" id="tabRaces" role="tab" aria-selected="true">Races</button>
+          <button class="tab" id="tabDrivers" role="tab" aria-selected="false">Drivers</button>
+          <button class="tab" id="tabTeams" role="tab" aria-selected="false">Teams</button>
+        </div>
+
+        <div class="right-controls"></div>
+      </nav>
+    </header>
+
+    <!-- RACES VIEW -->
+    <section id="viewRaces" class="view active" aria-label="Races tab content">
+      <h2 class="section-title" id="racesTitle">2025 Race Results</h2>
+
+      <div class="grid-2">
+        <div class="panel">
+          <div class="panel-header">
+            <h3>Historic Circuit Map</h3>
+            <button class="expand-btn" type="button">Expand</button>
+          </div>
+          <div class="panel-body">
+            <div id="circuitMap" class="viz">
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-header">
+            <h3>Season Timeline</h3>
+            <button class="expand-btn" type="button">Expand</button>
+          </div>
+          <div class="panel-body">
+            <div id="seasonTimeline" class="viz">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Race results table (placeholder structure + styling) -->
+      <div class="table-wrap">
+        <table aria-label="Race results table">
+          <thead>
+            <tr>
+              <th>Grand Prix</th>
+              <th>Date</th>
+              <th>Winner</th>
+              <th>Team</th>
+              <th class="num">Laps</th>
+              <th class="time">Time</th>
+            </tr>
+          </thead>
+          <tbody id="racesTbody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- DRIVERS VIEW -->
+    <section id="viewDrivers" class="view" aria-label="Drivers tab content">
+      <h2 class="section-title" id="driversTitle">2025 Driver Standings</h2>
+
+      <div class="drivers-actions">
+        <button class="primary-btn" id="compareDriversBtn" type="button">Compare Drivers</button>
+      </div>
+
+      <div class="table-wrap">
+        <table aria-label="Driver standings table">
+          <thead>
+            <tr>
+              <th class="pos">Pos.</th>
+              <th>Driver</th>
+              <th>Nationality</th>
+              <th>Team</th>
+              <th class="pts">Points</th>
+            </tr>
+          </thead>
+          <tbody id="driversTbody"></tbody>
+        </table>
+      </div>
+    </section>
+  
+
+    <!-- TEAMS VIEW -->
+    <section id="viewTeams" class="view" aria-label="Teams tab content">
+      <h2 class="section-header" id="teamsTitle">2025 Team Standings</h2>
+      <div class="table-wrap">
+        <table aria-label="Teams standings table">
+          <thead>
+            <tr>
+              <th class="pos">Pos.</th>
+              <th>Team</th>
+              <th>Nationality</th>
+              <th class="pts">Points</th>
+            </tr>
+          </thead>
+          <tbody id="teamsTbody"></tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+
+  <!-- MODAL: Starting vs Finishing Grid (race click) -->
+  <div class="modal-overlay" id="raceModal" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="raceModalTitle">
+      <div class="modal-header">
+        <div class="modal-title" id="raceModalTitle">Race: (placeholder)</div>
+        <button class="modal-close" id="closeModalBtn" type="button">Close</button>
+      </div>
+      <div class="modal-body">
+        <div id="gridViz" class="gridviz-wrap">
+          <iframe
+            id="gridIframe"
+            title="Starting vs Finishing Grid"
+            src="Grid/index.html"
+          ></iframe>
+        </div>        
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Expanded Visualization -->
+  <div class="modal-overlay" id="vizModal" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true">
+      <div class="modal-header">
+        <div class="modal-title" id="vizModalTitle">Expanded View</div>
+        <button class="modal-close" id="closeVizModal" type="button">Close</button>
+      </div>
+      <div class="modal-body">
+        <div id="vizModalBody" class="modal-viz"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="table_data.js"></script>
+  <script src="Season_Timeline/script.js"></script>
+  <script src="Circuit_Map/script.js"></script>
+  <script src="dashboard.js"></script>
+</body>
+</html>

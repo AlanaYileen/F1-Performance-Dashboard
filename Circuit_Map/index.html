@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F1 Analytics Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+</head>
+
+<body>
+    <div class="controls-container">
+        <div class="slider-wrapper">
+            <label for="yearSlider" style="font-weight:bold; margin-right:10px;">Season:</label>
+            <input id="yearSlider" type="range" min="1950" max="2024" value="2024" step="1" list="decades" />
+            <datalist id="decades">
+                <option value="1950" label="1950"></option>
+                <option value="1960" label="1960"></option>
+                <option value="1970" label="1970"></option>
+                <option value="1980" label="1980"></option>
+                <option value="1990" label="1990"></option>
+                <option value="2000" label="2000"></option>
+                <option value="2010" label="2010"></option>
+                <option value="2020" label="2020"></option>
+            </datalist>
+            <input id="yearInput" type="number" min="1950" max="2024" value="2024"/>
+        </div>
+    </div>
+
+    <div class="main-container">
+        
+        <div class="dashboard-grid-master">
+            
+            <div class="project-card">
+                <div class="card-header">
+                    <h3>Historic Circuit Map</h3>
+                    <button class="zoom-btn" title="Toggle Fullscreen">⛶</button>
+                </div>
+                <div id="map-container" style="flex:1; border:none; background:transparent;">
+                    <div id="map"></div>
+                    <div id="map-legend">
+                        <div class="legend-item"><span class="color-box inactive"></span> Never Hosted</div>
+                        <div class="legend-item"><span class="color-box history"></span> Historical Host</div>
+                        <div class="legend-item"><span class="color-box active"></span> Host (Selected Season)</div>
+                    </div>
+                    <div id="tooltip" class="tooltip-window hidden"></div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="card-header">
+                    <h3>Season Timeline</h3>
+                    <button class="zoom-btn" title="Toggle Fullscreen">⛶</button>
+                </div>
+                <div class="iframe-container">
+                    <iframe id="iframe-timeline" src="../IV_Individual_Assignment_3-main/index.html" class="dashboard-iframe"></iframe>
+                </div>
+            </div>
+
+            <div class="project-card">
+                
+                <div class="card-header">
+                    <h3>Starting vs. Finish Grid</h3>
+                    <button class="zoom-btn" title="Toggle Fullscreen">⛶</button>
+                </div>
+                <div class="iframe-container">
+                    <iframe id="iframe-slope" src="../InformationVisualizationWS2025-26-main/index.html" class="dashboard-iframe"></iframe>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="card-header">
+                    <h3>Driver Comparison</h3>
+                    <button class="zoom-btn" title="Toggle Fullscreen">⛶</button>
+                </div>
+                <div class="iframe-container">
+                    <iframe id="iframe-drivers" src="../Formula-1-Driver-Comparison-main/index.html" class="dashboard-iframe"></iframe>
+                </div>
+            </div>
+
+        </div> <div id="list-container">
+            <h3>Races in <span id="yearDisplay">2024</span></h3>
+            <div class="list-header">
+                <span>Nr.</span>
+                <span>Grand Prix</span>
+                <span>Circuit</span>
+            </div>
+            <ul id="race-list"></ul>
+            
+            <div class="disclaimer" style="padding: 10px; border-top: 1px solid #eee;">
+                Student Project | F1 Data: Kaggle/Ergast
+            </div>
+        </div>
+
+    </div> <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://unpkg.com/topojson@3"></script>
+    <script src="./script.js"></script>
+</body>
+</html>
