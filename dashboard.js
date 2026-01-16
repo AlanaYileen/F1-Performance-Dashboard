@@ -179,12 +179,29 @@
         teamsTbody.appendChild(tr);
       });
     }
-  
-    // -----------------------------
-    // Viz placeholders (your real code will replace these)
-    // -----------------------------
-    function renderVizPlaceholders() {
+
+    function highlightRaceRow(raceId) {
+      // Remove previous highlight
+      document
+        .querySelectorAll("#racesTbody tr.race-highlight")
+        .forEach(tr => tr.classList.remove("race-highlight"));
+
+      const row = document.querySelector(
+        `#racesTbody tr[data-race-id="${raceId}"]`
+      );
+      if (!row) return;
+      // Add highlight
+      row.classList.add("race-highlight");
+    }    
+
+    function clearRaceHighlight() {
+      document
+        .querySelectorAll("#racesTbody tr.race-highlight")
+        .forEach(tr => tr.classList.remove("race-highlight"));
     }
+  
+    // Viz placeholders
+    function renderVizPlaceholders() {}
   
     function renderFrame(sel, subtitle) {
       const root = d3.select(sel);
@@ -350,6 +367,25 @@
       }
     });
 
+    window.addEventListener("timeline:raceSelected", (e) => {
+      const { raceId, season } = e.detail;
+    
+      // Only react if we're on the same season
+      if (season !== selectedSeason) return;
+    
+      highlightRaceRow(raceId);
+    });
+
+    document.addEventListener("click", (event) => {
+      const timeline = document.getElementById("seasonTimeline");
+      const racesTable = document.querySelector(".table-wrap");
+    
+      if (timeline && timeline.contains(event.target)) return;
+    
+      if (racesTable && racesTable.contains(event.target)) return;
+    
+      clearRaceHighlight();
+    });
   
     renderAll();
 
