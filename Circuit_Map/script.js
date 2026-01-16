@@ -113,9 +113,9 @@
     // -----------------------------
     function loadDataAndInit() {
       return Promise.all([
-        d3.json(`/Circuit_Map/world.json`),
-        d3.csv(`/data/races.csv`, d3.autoType),
-        d3.csv(`/data/circuits.csv`, d3.autoType)
+        d3.json(`Circuit_Map/world.json`),
+        d3.csv(`data/races.csv`, d3.autoType),
+        d3.csv(`data/circuits.csv`, d3.autoType)
       ]).then(([world, racesRows, circuitsRows]) => init(world, racesRows, circuitsRows));
     }
   
