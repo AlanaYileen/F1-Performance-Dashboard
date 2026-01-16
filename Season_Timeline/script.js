@@ -93,14 +93,13 @@ function initTimeline() {
   g = svg.append("g")
     .attr("transform", `translate(${margin.left},${margin.top})`);
 
-  const base = "/";
 
   Promise.all([
-    d3.csv(`${base}data/races.csv`, d3.autoType),
-    d3.csv(`${base}data/results.csv`, d3.autoType),
-    d3.csv(`${base}data/drivers.csv`, d3.autoType),
-    d3.csv(`${base}data/constructors.csv`, d3.autoType),
-    d3.csv(`${base}data/circuits.csv`, d3.autoType),
+    d3.csv(`data/races.csv`, d3.autoType),
+    d3.csv(`data/results.csv`, d3.autoType),
+    d3.csv(`data/drivers.csv`, d3.autoType),
+    d3.csv(`data/constructors.csv`, d3.autoType),
+    d3.csv(`data/circuits.csv`, d3.autoType),
   ]).then(([races, results, drivers, constructors, circuits]) => {
     racesData = races;
     resultsData = results;
