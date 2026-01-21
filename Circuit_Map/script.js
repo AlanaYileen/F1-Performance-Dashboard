@@ -81,6 +81,7 @@
       tip
         .classed("hidden", false)
         .attr("aria-hidden", "false")
+        .style("display", "block")
         .style("left", `${x + 10}px`)
         .style("top", `${y + 10}px`);
   
